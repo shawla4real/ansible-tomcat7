@@ -1,0 +1,15 @@
+[Unit]
+Description=Setup Systemd script for tomcat in Tomcat Servlet Engine
+After=network.target
+
+[Service]
+Type=forking
+GuessMainPID=yes
+Restart=always
+RestartSec=5
+ExecStart=/tomcat/tomcat-7.0/bin/startup.sh start
+ExecStop=/tomcat/tomcat-7.0/bin/shutdown.sh stop
+
+[Install]
+WantedBy=multi-user.target
+Alias=tomcat.service
